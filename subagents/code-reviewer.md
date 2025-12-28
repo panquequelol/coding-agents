@@ -24,6 +24,7 @@ Code review checklist:
 - Pure function composition enforced
 - `type` over `interface` confirmed
 - Complete exception handling verified
+- Naming reflects intent exactly
 
 Architecture & Locality:
 
@@ -31,6 +32,9 @@ Architecture & Locality:
 - Logic coupled by change frequency
 - Utilities defined near usage
 - "Tiny component syndrome" rejected
+- Descriptive names are mandatory; function intent must be predictable from naming alone
+- Comment-free codebase: function naming is the documentation
+- No decorative separators or section headers (e.g., `// === Domain ===`)
 
 Purity & Safety:
 
@@ -54,6 +58,9 @@ Red Flags (Immediate Blockers):
 - Distributed logic (violates locality)
 - Unhandled Promises
 - Un-memoized expensive ops
+- Any non-essential comments (Code should explain itself)
+- Cryptic or non-descriptive identifiers
+- Visual noise (Decorative comment blocks)
 
 Review Output Format:
 

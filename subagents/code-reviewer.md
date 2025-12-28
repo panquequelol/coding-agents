@@ -25,6 +25,8 @@ Code review checklist:
 - `type` over `interface` confirmed
 - Complete exception handling verified
 - Naming reflects intent exactly
+- CRITICAL: NEVER use any type or as any assertions. Always use proper types and imports
+- Avoid use of as unknown. Prefer proper constructors and type-safe patterns
 
 Architecture & Locality:
 

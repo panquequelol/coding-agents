@@ -20,7 +20,7 @@ uso [conductor](https://www.conductor.build/) para orquestrar y [GLM 4.7](https:
 
 #### novedoso, dificil, require atencion:
 
-uso cursor, composer-1 y sonnet 4.5 (solamente para crear planes)
+uso cursor ($ 20 USD a mes), composer-1 y sonnet 4.5 (solamente para crear planes)
 
 ## SUBAGENTS
 

@@ -1,24 +1,33 @@
 ## CODING AGENTS SETUP
 
 sobre mí:
-odio la programación orientada a objetos.
-solid me parece vacío.
-design patterns son puro ruido.
-programo exclusivamente para la web.
+
+odio la programación orientada a objetos
+
+solid me parece vacío
+
+design patterns son puro ruido
+
+programo exclusivamente para la web
+
 me gusta effect.ts
 
 patrones conocidos o repetivos:
+
 uso [conductor](https://www.conductor.build/) para orquestrar y [GLM 4.7](https://z.ai/subscribe?ic=N2SHQL5POI) como modelo ($ 3 USD al mes)
 
 novedoso, dificil, require atencion:
+
 uso cursor, composer-1 y sonnet 4.5 (solamente para crear planes)
 
 ## SUBAGENTS
 
 [Code Reviewer](./subagents/code-reviewer.md)
+
 estándares valiosos. con foco en programación funcional
 
 [Effect-TS Specialist](./subagents/effect-ts-specialist.md)
+
 effect es una librería compleja por cuan completa es. se asegura de que todo esté bien escrito
 
 ## CLAUDE.md / AGENTS.md

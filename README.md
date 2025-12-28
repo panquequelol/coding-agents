@@ -12,11 +12,13 @@ programo exclusivamente para la web
 
 me gusta effect.ts
 
-patrones conocidos o repetivos:
+## FLUJO
+
+#### patrones conocidos o repetivos:
 
 uso [conductor](https://www.conductor.build/) para orquestrar y [GLM 4.7](https://z.ai/subscribe?ic=N2SHQL5POI) como modelo ($ 3 USD al mes)
 
-novedoso, dificil, require atencion:
+#### novedoso, dificil, require atencion:
 
 uso cursor, composer-1 y sonnet 4.5 (solamente para crear planes)
 

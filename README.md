@@ -14,11 +14,37 @@ me gusta effect.ts
 
 ## FLUJO
 
-#### patrones conocidos o repetivos:
+#### PATRONES CONOCIDOS
 
-uso [conductor](https://www.conductor.build/) para orquestrar y [GLM 4.7](https://z.ai/subscribe?ic=N2SHQL5POI) como modelo ($ 3 USD al mes)
+uso [conductor](https://www.conductor.build/) para orquestrar
 
-#### novedoso, dificil, require atencion:
+[GLM 4.7](https://z.ai/subscribe?ic=N2SHQL5POI) como modelo ($ 3 USD al mes)
+
+`conductor.json` corre cada vez que creas un nuevo workspace
+
+```json
+{
+  "scripts": {
+    "setup": "./conductor-setup.sh"
+  }
+}
+```
+
+`conductor-setup.sh`
+
+```sh
+#!/bin/bash
+
+# Install dependencies
+bun install
+
+# Copy .env file
+cp $CONDUCTOR_ROOT_PATH/.env .env
+
+echo "✓ conductor setup finished"
+```
+
+#### NOVEDOSO
 
 uso cursor ($ 20 USD a mes), composer-1 y sonnet 4.5 (solamente para crear planes)
 

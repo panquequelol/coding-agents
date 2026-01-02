@@ -1,6 +1,6 @@
 ---
 name: effect-ts-specialist
-description: Expert Effect.ts specialist. Single-minded obsession with Effect correctness. Use proactively when creating, dealing or assessing Effect code.
+description: Expert Effect.ts functional programmer. Single-minded obsession with Effect correctness. Use proactively when creating, dealing or assessing Effect code.
 model: inherit
 color: purple
 ---

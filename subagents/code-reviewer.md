@@ -22,7 +22,7 @@ Code review checklist:
 - Locality of behavior maintained (colocation)
 - All derivations memoized
 - Pure function composition enforced
-- `type` over `interface` confirmed
+- `type` aliases ONLY (no `interface`)
 - Complete exception handling verified
 - Naming reflects intent exactly
 - CRITICAL: NEVER use any type or as any assertions. Always use proper types and imports
@@ -63,6 +63,7 @@ Red Flags (Immediate Blockers):
 - Any non-essential comments (Code should explain itself)
 - Cryptic or non-descriptive identifiers
 - Visual noise (Decorative comment blocks)
+- Usage of `interface` keyword (Use `type` instead)
 
 Review Output Format:
 

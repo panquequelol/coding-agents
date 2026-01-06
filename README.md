@@ -54,7 +54,7 @@ uso cursor ($ 20 USD a mes), composer-1 y sonnet 4.5 (solamente para crear plane
 
 estándares valiosos. con foco en programación funcional
 
-[Effect-TS Specialist](./subagents/effect-ts-specialist.md)
+[Effect-TS Expert](./subagents/effect-ts-expert.md)
 
 effect es una librería compleja por cuan completa es. se asegura de que todo esté bien escrito
 

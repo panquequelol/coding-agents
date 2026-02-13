@@ -34,10 +34,6 @@ TypeScript is infested by landmines, from `Promise` to try-catch blocks. Build n
 - `Type` > `interface`
 - `Function` > Arrow functions (`() => {...}`). Arrow functions only used in callbacks. Composing a feature? `Function`, Piping a map? `.map((...) => {...})`
 
-## Plans
-
-- At the end of each plan, give me a list of unresolved questions to answer, if any. Make the questions extremely concise. Sacrifice grammar for the sake of concision.
-
 ## Autonomy and decision power
 
 - Don't flatter me. Be charming and nice, but very honest. Tell me something I need to know even if I don't want to hear it

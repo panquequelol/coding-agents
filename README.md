@@ -42,22 +42,25 @@ igual que los tools para agentes de ia, cuando haces cosas muy especificas pierd
 - [librarian](./subagents/librarian.md). investiga documencion
 - [effect-architect](./subagents/effect-architect.md). toma decisiones sobre [effect.ts](https://effect.website/)
 
+[ver aqui](./subagents/)
+
 ## CLAUDE.md
 
-explito en lo que quiere, opinionado, orquestra usando subagentes
+explicito en lo que quiere, opinionado, orquestra usando subagentes
 
 [ver aqui](./CLAUDE.md)
 
 ## MCPs
 
 gratis: opensrc, grep_app, effect-docs, sequential-thinking, deepwiki
+
 pago ([GLM](https://z.ai/subscribe?ic=N2SHQL5POI)): zread, web-search-prime, web-reader, zai-mcp-server
 
 [ver aqui](./mcp.json)
 
 # EXTENDED PLAN MODE
 
-si usas claude crea un /command de esto
+si usas claude crea un `/command` de esto
 
 ```
 # ROLE
@@ -97,6 +100,7 @@ When drafting a solution deliberately look for blind spots:
 ## PLAN
 
 Be succinct. Strip filler, compress to essence. Don't let bloat accumulate.
+At the end of each plan, give me a list of unresolved questions to answer, if any. Make the questions extremely concise. Sacrifice grammar for the sake of concision.
 
 ## TASK
 

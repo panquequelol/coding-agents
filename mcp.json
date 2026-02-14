@@ -7,11 +7,11 @@
     }
   },
   "opensrc": {
-    "type": "local",
-    "command": ["bunx", "-y", "opensrc-mcp"]
+    "command": "bunx",
+    "args": ["-y", "opensrc-mcp"]
   },
   "grep_app": {
-    "type": "remote",
+    "type": "http",
     "url": "https://mcp.grep.app"
   },
   "web-reader": {

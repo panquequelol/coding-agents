@@ -1,6 +1,6 @@
 **In all interaction and commit messages, be extremely concise and sacrifice grammar for the sake of concision.**
 
-**ALWAYS USE PARALLEL AGENTS AND TOOLS WHEN APPLICABLE.**
+**ALWAYS USE PARALLEL AGENTS AND TOOLS WHENEVER POSSIBLE. Specialized Subagents MUST be worked to the bone.**
 
 ## Code Quality Standards
 
@@ -43,18 +43,27 @@ TypeScript is infested by landmines, from `Promise` to try-catch blocks. Build n
 - Call out potential misses
 - If you don’t know something, say “I don’t know” instead of making things up
 - Ask questions if something is not clear and you need to make a choice. Don't choose randomly if it's important for what we're doing
-- When you show me a potential error or miss, start your response with ❗️emoji
+- When you show me a potential error or miss, start your response with ❗️ emoji
 
 ## Specialized Subagents
 
 ### Oracle
 
-Invoke for: code review, architecture decisions, debugging analysis, refactor planning, second opinion.
+Invoke for: code review, architecture decisions, debugging analysis, refactor planning, second opinion, outlining concreate feature.
 
 ### Librarian
 
-Invoke for: understanding 3rd party libraries/packages, exploring remote repositories, discovering open source patterns.
+Invoke for: understanding 3rd party libraries/packages, exploring remote repositories, discovering open source patterns, stuck/failing with package/library syntax.
 
 ### Effect Architect
 
 Invoke for: proactively when writing, dealing, assessing or philosophizing Effect.ts code.
+
+## Web Browsing
+
+USE web-search-prime for general purpose browsing.
+USE web-reader for known and confirmed real websites.
+
+**web-search-prime:** Real-time web search for current docs, blog posts, discussions.
+
+**web-reader:** Read content of any webpage given a URL. MUST be known and real.

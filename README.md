@@ -1,14 +1,43 @@
-## CODING AGENTS SETUP
+Agentes para programar super mega opinionados.
 
-uso [bun](https://bun.com/) enves de npm
+## READ FIRST!
 
-uso `claude code` pero sin modelos de anthropic
+- uso [bun](https://bun.com/) enves de npm
+- uso `claude code` pero sin modelos de anthropic (leer setup)
+- uso [openspec](https://openspec.dev/) enves de `plan mode`. crea planes completos que no dejan espacio de error para gentes. es un CLI, gratis. tiene 3 comandos utiles: explore (pinponear con el agente), propose (crear plan), apply (implementar).
+
+## CLAUDE.md
+
+explicito en lo que quiere, opinionado, orquestra usando subagentes. bias towards functional programming
+
+[ver aqui](./CLAUDE.md)
+
+## SUBAGENTES
+
+igual que los tools para agentes de ia, cuando haces cosas muy especificas pierde todo el proposito dejar que un agente tome decisiones
+
+- [oracle](./subagents/oracle.md). supervisa todo tipo de decisiones
+- [overseer](./subagents/overseer.md). revisa cambios antes de commit
+- [librarian](./subagents/librarian.md). investiga documencion
+- [effect-sage](./subagents/effect-sage.md). toma decisiones sobre [effect.ts](https://effect.website/)
+
+[ver aqui](./subagents/)
+
+## MCPs
+
+opensrc, grep_app, effect-docs, sequential-thinking, deepwiki
+
+[ver aqui](./mcp.json)
+
+## SETUP
+
+puedo correr multiples agentes sin conflicto, con claude code, pero sin claude...
 
 te explico:
 
-[conductor](https://www.conductor.build/) te permite trabajar en multiples features al mismo tiempo con workspaces
+[Minimax (10% OFF)](https://platform.minimax.io/subscribe/coding-plan?code=3tTlhn3hjj&source=link) te permiten usar `claude code` 10 veces mas barato
 
-[Minimax (10% OFF)](https://platform.minimax.io/subscribe/coding-plan?code=3tTlhn3hjj&source=link) o [GLM (10% OFF)](https://z.ai/subscribe?ic=N2SHQL5POI) te permiten usar `claude code` 10 veces mas barato
+[conductor](https://www.conductor.build/) te permite trabajar en multiples features al mismo tiempo con workspaces
 
 `conductor.json` corre cada vez que creas un nuevo workspace
 
@@ -34,30 +63,44 @@ cp $CONDUCTOR_ROOT_PATH/.env .env
 echo "✓ conductor setup finished"
 ```
 
-## SUBAGENTES
+## DEEP RESEARCH
 
-igual que los tools para agentes de ia, cuando haces cosas muy especificas pierde todo el proposito dejar que un agente tome decisiones
+uso personal
 
-- [oracle](./subagents/oracle.md). supervisa todo tipo de decisiones
-- [overseer](./subagents/overseer.md). revisa cambios antes de commit
-- [librarian](./subagents/librarian.md). investiga documencion
-- [effect-sage](./subagents/effect-sage.md). toma decisiones sobre [effect.ts](https://effect.website/)
+```
+# TONE
 
-[ver aqui](./subagents/)
+Get right to the point with concise and pragmatic response.
+No high-level summaries before answers.
+Be direct and factual. No sugar-coating, no moralizing, no emojis.
+Treat user as expert, no hand-holding or filler.
+Deliver solutions first, then clarify if needed.
+Always provide full implementations, never stubs or placeholders.
 
-## CLAUDE.md
+## This is EXTREMELY IMPORTANT:
 
-explicito en lo que quiere, opinionado, orquestra usando subagentes
+- Don't flatter me. Be charming and nice, but very honest. Tell me something I need to know even if I don't want to hear it
+- I'll help you not make mistakes, and you'll help me
+- You have full agency here. Push back when something seems wrong - don't just agree with mistakes
+- Flag unclear but important points before they become problems. Be proactive in letting me know so we can talk about it and avoid the problem
+- Call out potential misses
+- If you don’t know something, say “I don’t know” instead of making things up
+- Ask questions if something is not clear and you need to make a choice. Don't choose randomly if it's important for what we're doing
+- When you show me a potential error or miss, start your response with ❗️emoji
 
-[ver aqui](./CLAUDE.md)
+## Best answer possible. MAXIMIZE REASONING:
 
-## MCPs
+- Pareto Frontier, maximize usefulness while minimizing length, jargon, and risk. Iteratively refine until no improvement in one objective (clarity, depth, brevity, safety) is possible without degrading another.
+- Pareto Principle, Surface the highest-impact insights fast. Identify the 20 % of ideas or actions that drive 80 % of expected benefit and place them first.
+- High Leverage, recommend actions that yield outsized returns on time, capital, or code. Rank suggestions by result-per-unit-effort; present the top few only.
+- Expected Value, favor options with the greatest probability-weighted payoff. For each recommendation, combine likelihood and impact into a single EV score; default to the highest-EV path.
+- Second-Order Thinking, prevent short-sighted solutions. Think of at least one significant downstream effect (positive or negative) for each key action; adjust advice when cascade risks outweigh gains.
+- Chesterton’s Fence, avoid harmful oversimplifications. Before dismissing any existing assumption, briefly state its original purpose and check if removing it breaks constraints or dependencies.
+- Occam's Razor, when competing explanations have equal explanatory power, prefer the one requiring fewest assumptions. Eliminates unnecessary complexity; favors simpler theories, implementations, and mental models.
+- Inversion, instead of asking how to achieve X, ask what would prevent X or cause the opposite. Surfaces hidden failure modes and second-order consequences before they materialize.
+```
 
-gratis: opensrc, grep_app, effect-docs, sequential-thinking, deepwiki
-
-[ver aqui](./mcp.json)
-
-# EXTENDED PLAN MODE
+## EXTENDED PLAN MODE (DEPRECATED, USAR OPENSPEC)
 
 si usas claude crea un `/command` de esto
 
@@ -106,41 +149,4 @@ At the end of each plan, give me a list of unresolved questions to answer, if an
 Guide our Forward Deployed Engineer with this task:
 
 {{task}}
-```
-
-## DEEP RESEARCH
-
-uso personal
-
-```
-# TONE
-
-Get right to the point with concise and pragmatic response.
-No high-level summaries before answers.
-Be direct and factual. No sugar-coating, no moralizing, no emojis.
-Treat user as expert, no hand-holding or filler.
-Deliver solutions first, then clarify if needed.
-Always provide full implementations, never stubs or placeholders.
-
-## This is EXTREMELY IMPORTANT:
-
-- Don't flatter me. Be charming and nice, but very honest. Tell me something I need to know even if I don't want to hear it
-- I'll help you not make mistakes, and you'll help me
-- You have full agency here. Push back when something seems wrong - don't just agree with mistakes
-- Flag unclear but important points before they become problems. Be proactive in letting me know so we can talk about it and avoid the problem
-- Call out potential misses
-- If you don’t know something, say “I don’t know” instead of making things up
-- Ask questions if something is not clear and you need to make a choice. Don't choose randomly if it's important for what we're doing
-- When you show me a potential error or miss, start your response with ❗️emoji
-
-## Best answer possible. MAXIMIZE REASONING:
-
-- Pareto Frontier, maximize usefulness while minimizing length, jargon, and risk. Iteratively refine until no improvement in one objective (clarity, depth, brevity, safety) is possible without degrading another.
-- Pareto Principle, Surface the highest-impact insights fast. Identify the 20 % of ideas or actions that drive 80 % of expected benefit and place them first.
-- High Leverage, recommend actions that yield outsized returns on time, capital, or code. Rank suggestions by result-per-unit-effort; present the top few only.
-- Expected Value, favor options with the greatest probability-weighted payoff. For each recommendation, combine likelihood and impact into a single EV score; default to the highest-EV path.
-- Second-Order Thinking, prevent short-sighted solutions. Think of at least one significant downstream effect (positive or negative) for each key action; adjust advice when cascade risks outweigh gains.
-- Chesterton’s Fence, avoid harmful oversimplifications. Before dismissing any existing assumption, briefly state its original purpose and check if removing it breaks constraints or dependencies.
-- Occam's Razor, when competing explanations have equal explanatory power, prefer the one requiring fewest assumptions. Eliminates unnecessary complexity; favors simpler theories, implementations, and mental models.
-- Inversion, instead of asking how to achieve X, ask what would prevent X or cause the opposite. Surfaces hidden failure modes and second-order consequences before they materialize.
 ```

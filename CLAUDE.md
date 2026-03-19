@@ -2,7 +2,26 @@
 
 **ALWAYS USE PARALLEL AGENTS AND TOOLS WHENEVER POSSIBLE. Specialized Subagents MUST be worked to the bone.**
 
-## Code Quality Standards
+## Decisin power
+
+- Don't flatter me. Be charming and nice, but very honest. Tell me something I need to know even if I don't want to hear it
+- I'll help you not make mistakes, and you'll help me
+- You have full agency here. Push back when something seems wrong - don't just agree with mistakes
+- Flag unclear but important points before they become problems. Be proactive in letting me know so we can talk about it and avoid the problem
+- Call out potential misses
+- If you don’t know something, say “I don’t know” instead of making things up
+- Ask questions if something is not clear and you need to make a choice. Don't choose randomly if it's important for what we're doing
+- When you show me a potential error or miss, start your response with ❗️ emoji
+
+## Architecture
+
+- USE `bun` as a package manager (e.g: `bun add ai`)
+
+...
+
+## Conventions
+
+### Quality Standards
 
 - Make minimal, surgical changes
 - **Never compromise type safety**: No `any`, no non-null assertion operator (`!`), no type assertions (`as Type`)
@@ -22,7 +41,7 @@ you cut will be cut again.
 
 **Fight entropy. Leave the codebase better than you found it.**
 
-## TypeScript Patterns
+### TypeScript Patterns
 
 TypeScript is infested by landmines, from `Promise` to try-catch blocks. Build non-ambiguous, highly deterministic systems. All steps in problem-solving must be explicit, pure and composable.
 
@@ -34,36 +53,38 @@ TypeScript is infested by landmines, from `Promise` to try-catch blocks. Build n
 - `Type` > `interface`
 - `Function` > Arrow functions (`() => {...}`). Arrow functions only used in callbacks. Composing a feature? `Function`, Piping a map? `.map((...) => {...})`
 
-## Autonomy and decision power
+## Subagents
 
-- Don't flatter me. Be charming and nice, but very honest. Tell me something I need to know even if I don't want to hear it
-- I'll help you not make mistakes, and you'll help me
-- You have full agency here. Push back when something seems wrong - don't just agree with mistakes
-- Flag unclear but important points before they become problems. Be proactive in letting me know so we can talk about it and avoid the problem
-- Call out potential misses
-- If you don’t know something, say “I don’t know” instead of making things up
-- Ask questions if something is not clear and you need to make a choice. Don't choose randomly if it's important for what we're doing
-- When you show me a potential error or miss, start your response with ❗️ emoji
-
-## Specialized Subagents
+Proactively invoke specialized subagents when their use fits your needs. Pair when you can take advantage of the combinations.
 
 ### Oracle
 
-Invoke for: code review, architecture decisions, debugging analysis, refactor planning, second opinion, outlining concreate feature.
+Use for: strategic second opinion on subtle regressions, better-solution assessment, complex multi-file debugging, and large refactor trade-offs.
+
+Not for: routine diff review, implementation readiness checks, or narrow well-scoped tasks.
+
+Pair with: Overseer for high-stakes review. Effect Sage for deep Effect architecture/debugging.
+
+### Overseer
+
+Use for: tactical review of changed files and diffs before commit or handoff. Focus on bugs, security issues, behavioral regressions, and implementation risks.
+
+Not for: architecture strategy, broad refactor planning, or deep system-wide reasoning.
+
+Escalate to: Oracle when review depends on cross-system reasoning or subtle invariants. Effect Sage when the hard part is Effect-specific correctness.
 
 ### Librarian
 
-Invoke for: understanding 3rd party libraries/packages, exploring remote repositories, discovering open source patterns, stuck/failing with package/library syntax.
+Use for: cross-repository research, understanding third-party libraries, reading framework code, exploring remote repositories, and finding real-world usage patterns.
 
-### Effect Architect
+Not for: local code review, generic planning, or tasks answerable from the current codebase alone.
 
-Invoke for: proactively when writing, dealing, assessing or philosophizing Effect.ts code.
+Pair with: Oracle for architecture choices involving external libraries. Effect Sage for Effect ecosystem docs and patterns.
 
-## Web Browsing
+### Effect Sage
 
-USE web-search-prime for general purpose browsing.
-USE web-reader for known and confirmed real websites.
+Use for: Effect.ts implementation and review when the hard part is Effect itself: Schema modeling, typed errors vs defects, services/layers, retries, timeouts, concurrency, resources, and boundary design.
 
-**web-search-prime:** Real-time web search for current docs, blog posts, discussions.
+Not for: plain TypeScript with no meaningful Effect design choice.
 
-**web-reader:** Read content of any webpage given a URL. MUST be known and real.
+Pair with: Overseer for Effect-heavy diff review. Oracle for difficult Effect architecture, debugging, or refactor trade-offs.

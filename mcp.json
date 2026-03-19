@@ -1,11 +1,4 @@
 {
-  "zread": {
-    "type": "http",
-    "url": "https://api.z.ai/api/mcp/zread/mcp",
-    "headers": {
-      "Authorization": "Bearer {{GLM-CODING-PLAN-API}}"
-    }
-  },
   "opensrc": {
     "command": "bunx",
     "args": ["-y", "opensrc-mcp"]
@@ -13,29 +6,6 @@
   "grep_app": {
     "type": "http",
     "url": "https://mcp.grep.app"
-  },
-  "web-reader": {
-    "type": "http",
-    "url": "https://api.z.ai/api/mcp/web_reader/mcp",
-    "headers": {
-      "Authorization": "Bearer {{GLM-CODING-PLAN-API}}"
-    }
-  },
-  "web-search-prime": {
-    "type": "http",
-    "url": "https://api.z.ai/api/mcp/web_search_prime/mcp",
-    "headers": {
-      "Authorization": "Bearer {{GLM-CODING-PLAN-API}}"
-    }
-  },
-  "zai-mcp-server": {
-    "type": "stdio",
-    "command": "bunx",
-    "args": ["-y", "@z_ai/mcp-server"],
-    "env": {
-      "Z_AI_API_KEY": "{{GLM-CODING-PLAN-API}}",
-      "Z_AI_MODE": "ZAI"
-    }
   },
   "effect-docs": {
     "command": "bunx",

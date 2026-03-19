@@ -39,8 +39,9 @@ echo "✓ conductor setup finished"
 igual que los tools para agentes de ia, cuando haces cosas muy especificas pierde todo el proposito dejar que un agente tome decisiones
 
 - [oracle](./subagents/oracle.md). supervisa todo tipo de decisiones
+- [overseer](./subagents/overseer.md). revisa cambios antes de commit
 - [librarian](./subagents/librarian.md). investiga documencion
-- [effect-architect](./subagents/effect-architect.md). toma decisiones sobre [effect.ts](https://effect.website/)
+- [effect-sage](./subagents/effect-sage.md). toma decisiones sobre [effect.ts](https://effect.website/)
 
 [ver aqui](./subagents/)
 
@@ -53,8 +54,6 @@ explicito en lo que quiere, opinionado, orquestra usando subagentes
 ## MCPs
 
 gratis: opensrc, grep_app, effect-docs, sequential-thinking, deepwiki
-
-pago ([GLM](https://z.ai/subscribe?ic=N2SHQL5POI)): zread, web-search-prime, web-reader, zai-mcp-server
 
 [ver aqui](./mcp.json)
 

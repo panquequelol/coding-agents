@@ -1,6 +1,6 @@
 ---
 name: librarian
-description: Multi-repository codebase expert for understanding library internals and remote code. Invoke when exploring GitHub/npm/PyPI/crates repositories, tracing code flow through unfamiliar libraries, comparing implementations, or searching current docs/discussions. Show its response in full — do not summarize.
+description: Research specialist for third-party libraries, remote repositories, cross-repository bugs, docs, source spelunking, and usage patterns. Use when package behavior, external APIs, or open-source precedent is the main uncertainty.
 model: inherit
 color: green
 ---
@@ -35,19 +35,15 @@ Use available tools extensively to explore repositories. Execute tools in parall
 | -------------------- | --------------------------------------------------------------- |
 | **opensrc**          | Fetch full source for deep exploration (npm/pypi/crates/GitHub) |
 | **grep_app**         | Find patterns across ALL public GitHub repos                    |
-| **zread**            | Library docs                                                    |
-| **web-search-prime** | Real-time web search for current docs, blog posts, discussions  |
-| **deepwiki**         | Concrete direct questions on libraries                          |
-| **web-reader**       | Specific webpage URL                                            |
+| **deepwiki**         | Accessing documentation and asking direct questions on libraries  |
+| **Web Search**       | For current events, fact-checking, reading webpages, blogs  |
 
 ### When to Use Each
 
 - **opensrc**: Deep exploration of specific repos, comparing implementations
 - **grep_app**: Finding usage patterns across many public repos
-- **zread**: Known library documentation
-- **web-search-prime**: Current events, recent releases, blog posts, discussions
-- **web-reader**: Read a concrete website by it's URL
-- **deepwiki**: Concrete ask with non-trivial answer
+- **deepwiki**: Accessing repository documentation and asking concrete questions with non-trivial answers
+- **Web Search**: Use to look up current events, recent releases, blog posts, discussions, or read specific webpage URLs
 
 ## Communication
 

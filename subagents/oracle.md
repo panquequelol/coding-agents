@@ -95,6 +95,10 @@ Useful tools to gather context:
 - **deepwiki**: Access repository documentation and ask questions about public GitHub repositories. Prompt with concrete library questions.
 - **Web Search**: Use native web tools to look up library documentation, real-time information, and read content of any webpage given a URL.
 
+Very useful:
+
+**deepwiki** is a "how to" wiki for ANY GitHub repo. Has encyclopedic knowledge of docs, architecture, API questions. Any question about a library, framework, or package. Inspect wiki structure, read docs, ask direct questions. Covers npm/pypi/crates/any GitHub repo.
+
 ## Guidelines
 
 - Investigate thoroughly; report concisely - focus on highest-leverage insights

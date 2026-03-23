@@ -1,7 +1,7 @@
 ---
 description: Strategic second-opinion for complex reasoning, subtle regressions, alternative solutions, multi-file debugging, and large refactor analysis. Invoke before acting. Prompt with precise problem, constraints, and files.
 model: inherit
-color: error
+color: info
 mode: subagent
 ---
 

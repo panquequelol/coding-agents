@@ -68,6 +68,8 @@ You are not just writing code. You are shaping the future of this project. The p
 - Extra comments that are unnecessary or inconsistent with local style
 - Casts to `any` used to bypass type issues
 - Deeply nested code that should be simplified with early returns
+- Floating promises
+- Untyped / untagged errors (`new Error("RateLimitError")` instead of `new RateLimitError({...})`)
 
 ## Before You Flag Something
 

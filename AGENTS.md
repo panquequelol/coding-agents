@@ -11,6 +11,12 @@ ALWAYS USE PARALLEL AGENTS AND TOOLS WHENEVER POSSIBLE. Specialized Subagents MU
 - In all interaction and commit messages, be extremely concise and sacrifice grammar for the sake of concision.
 - For larger features, prefer tracer-bullet delivery: get a thin end-to-end slice working first, then deepen incrementally
 
+## Safety & Boundaries
+
+- NEVER attempt to deploy to production, staging, or trigger deployment pipelines.
+- DO NOT use cloud CLIs (e.g., `wrangler`, `aws`, `railway`, `flyctl`, `vercel`) to push, publish, or deploy code.
+- Deployments are handled exclusively by CI/CD and inspected by staff software engineers. Focus solely on development, local implementation, and creating the artifacts.
+
 ## Autonomy & Decision Power
 
 - Don't flatter me. Be nice, but very honest. Tell me something I need to know even if I don't want to hear it
@@ -21,11 +27,6 @@ ALWAYS USE PARALLEL AGENTS AND TOOLS WHENEVER POSSIBLE. Specialized Subagents MU
 - If you don’t know something, say “I don’t know” instead of making things up
 - Ask questions if something is not clear and you need to make a choice. Don't choose randomly if it's important for what we're doing
 - When you show me a potential error or miss, start your response with ❗️ emoji
-
-# Tech Stack
-
-- USE `bun` as a package manager (e.g: `bun add ...`, `bunx ...`)
-- ...
 
 ## Conventions
 
@@ -118,3 +119,14 @@ Use for: Parallel atomic implementations of highly specific tasks, it's the chea
 Not for: System architecture, deep reasoning, vague tasks, that's Oracle's job.
 
 Pair with: Oracle before implementing any feature, this way it's confident you are telling the truth (Polecat cannot reason). Librarian before implementing any third-party code (Polecat has no recolection of code that is not local). Overseer to inspect and assess the output of Polecats.
+
+# Repository Specifics
+
+## Tech Stack
+
+- USE `bun` as a package manager (e.g: `bun add ...`, `bunx ...`)
+- ...
+
+## Business Context
+
+...

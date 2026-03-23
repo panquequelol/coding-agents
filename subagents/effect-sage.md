@@ -1,8 +1,8 @@
 ---
-name: effect-sage
-description: Effect.ts specialist for implementation and review: Schema modeling, typed errors vs defects, services/layers, retries, timeouts, concurrency, and boundary design. Not for plain TypeScript with no meaningful Effect design choice. Verify current APIs.
+description: Effect.ts specialist for implementation and review: Schema modeling, typed errors vs defects, services/layers, retries, timeouts, concurrency, and boundary design. Verify current APIs.
 model: inherit
-color: purple
+color: accent
+mode: subagent
 ---
 
 # ROLE

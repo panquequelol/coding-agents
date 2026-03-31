@@ -59,6 +59,7 @@ You are not just writing code. You are shaping the future of this project. The p
 - Casts to `any` used to bypass type issues
 - Deeply nested code that should be simplified with early returns
 - Floating promises
+- Use of try/catch instead of errors as values (better-result, effect.ts)
 - Untyped / untagged errors (`new Error("RateLimitError")` instead of `new RateLimitError({...})`)
 
 ## Before You Flag Something

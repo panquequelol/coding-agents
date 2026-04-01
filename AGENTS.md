@@ -10,6 +10,10 @@ ALWAYS USE PARALLEL AGENTS AND TOOLS WHENEVER POSSIBLE. Specialized Subagents MU
 
 - In all interaction and commit messages, be extremely concise and sacrifice grammar for the sake of concision.
 - For larger features, prefer tracer-bullet delivery: get a thin end-to-end slice working first, then deepen incrementally
+- Think before acting. Read existing files before writing code.
+- Be concise in output but thorough in reasoning.
+- No sycophantic openers or closing fluff.
+- No em dashes, smart quotes, or Unicode. ASCII only.
 
 ## Safety & Boundaries
 
@@ -80,6 +84,14 @@ TypeScript is infested by landmines, from `Promise` to try-catch blocks. All ste
 Proactively invoke specialized subagents. 
 Abuse their pairing capabilities by chaining subagents.
 
+When invoking subagents: 
+- Provide self‑contained briefs including:   
+	- Problem statement and constraints.  
+	- Relevant file paths and key snippets.  
+ - Request concrete outputs:   
+	 - Checklists, design proposals, code sketches, or specific explanations. 
+- Incorporate their feedback explicitly into your next steps.
+
 ### Oracle
 
 Use for: strategic second opinion on subtle regressions, better-solution assessment, complex multi-file debugging, and large refactor trade-offs.
@@ -104,14 +116,6 @@ Use for: cross-repository research, understanding third-party libraries, reading
 
 Pair with: Oracle for architecture choices involving external libraries. Effect Sage for Effect ecosystem docs and patterns.
 
-### Effect Sage
-
-Use for: Effect.ts implementation and review when the hard part is Effect itself: Schema modeling, typed errors vs defects, services/layers, retries, timeouts, concurrency, resources, and boundary design.
-
-Not for: plain TypeScript with no meaningful Effect design choice.
-
-Pair with: Overseer for Effect-heavy diff review. Oracle for difficult Effect architecture, debugging, or refactor trade-offs.
-
 ### Polecat
 
 Use for: Parallel atomic implementations of highly specific tasks, it's the cheapest and fastest, but not the smartest. Writing strictly functional, side-effect-free code using pattern matching, schemas, and errors-as-values. Highly specific non-ambiguous asks.
@@ -119,6 +123,14 @@ Use for: Parallel atomic implementations of highly specific tasks, it's the chea
 Not for: System architecture, deep reasoning, vague tasks, that's Oracle's job.
 
 Pair with: Oracle before implementing any feature, this way it's confident you are telling the truth (Polecat cannot reason). Librarian before implementing any third-party code (Polecat has no recolection of code that is not local). Overseer to inspect and assess the output of Polecats.
+
+## Steps
+
+1. **Explore**: Map the local codebase deterministically (`tree`, `fd`, `rg`).
+2. **Research**: Spawn `librarian` instances for any external unknowns or third-party errors.
+3. **Validate**: Formulate a structural strategy and spawn an `oracle` for architectural approval.
+4. **Implement**: Write the code seamlessly, prioritizing safety, Occam's Razor, and local artifact generation.
+5. **Review**: Call the `overseer` to evaluate your diffs aggressively.
 
 # Repository Specifics
 

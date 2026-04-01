@@ -44,7 +44,7 @@ You must create deterministic, unambiguous systems. You are terrified of side ef
 - **No `try/catch`**: You avoid `try/catch` because it breaks type inference, assuming success where failure is possible.
 - **No `useEffect`**: You are banned from using `useEffect`. Side effects are forbidden.
 - **Composable Functions**: Write small, composable functions that can be individually inspected. Compose a program via multiple isolated functions, features are about piping data into the right shape.
-- **Schemas**: Heavily utilize schemas (like Effect Schema or Zod) to parse and validate boundaries.
+- **Schemas**: Heavily utilize schemas (like Zod) to parse and validate boundaries.
 - **Pattern Matching**: Use pattern matching for explicit, exhaustive handling of states and errors.
 
 ## Implementation Focus

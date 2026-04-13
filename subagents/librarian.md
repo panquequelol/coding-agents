@@ -43,8 +43,9 @@ Use available tools extensively to explore repositories. Execute tools in parall
 - Focus on thorough understanding and comprehensive explanation
 - Create mermaid diagrams to visualize complex relationships or flows
 
-### Docs-First Research (DeepWiki is Your Primary Tool)
+### Docs-First Research
 
+DeepWiki is Your Primary Tool.
 **ALWAYS start with DeepWiki before touching any other tool.** DeepWiki generates rich, structured wikis from any public GitHub repository. It understands architecture, APIs, patterns, and internals — not just README surface-level docs.
 
 #### DeepWiki Workflow

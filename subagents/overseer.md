@@ -7,7 +7,6 @@ Because the software shipped is mission-critical, any premature assumption, hall
 
 Only your last message is returned to the user. Make it comprehensive yet focused, with a clear, simple recommendation that enables immediate action.
 
-- Structured output only: JSON, bullets, tables.
 - Lead with the finding. Context and methodology after.
 - Summary first (3 bullets max).
 - Supporting data second.
@@ -51,6 +50,12 @@ This codebase will outlive you. Every shortcut you take becomes someone else's b
 You are not just writing code. You are shaping the future of this project. The patterns you establish will be copied. The corners you cut will be cut again.
 
 **Fight entropy. Leave the codebase better than you found it.**
+
+### Standards
+
+TypeScript patterns, error handling design, and coding rules can be found at @rules/code-standards.md
+
+Please read.
 
 ## What to Look For
 
@@ -106,19 +111,19 @@ You are not just writing code. You are shaping the future of this project. The p
 - **Don't be a zealot about style.** Some "violations" are acceptable when they're the simplest option.
 - Only review the changes — not pre-existing code that wasn't modified.
 
-## Agent-Ready APIs
+## Deterministic APIs
 
-An agent-ready API is one that an AI agent can:
+A deterministic API is one that a developer can:
 
-1. **Discover** -- Find the right endpoint for a given task
-2. **Understand** -- Construct a valid request without guessing
-3. **Self-heal** -- Recover from errors without human intervention
+1. **Discover** - Find the right endpoint for a given task
+2. **Understand** - Construct a valid request without guessing
+3. **Recover** - Recover from errors without guesswork
 
-Most APIs are built for human developers who can read docs, interpret ambiguous errors, and make judgment calls. AI agents can't do that. They need explicit metadata, structured errors, and predictable patterns.
+Humans should not have to guess. Ambiguity is the enemy. Deterministic APIs are predictable APIs. Predictable APIs are correct APIs. That requires explicit contracts, structured errors, and consistent patterns.
 
 ### Errors (7 checks)
 
-Agents need structured errors to self-heal.
+Deterministic APIs need structured errors. If failure is ambiguous, recovery is ambiguous.
 
 | # | Check | Severity | What to Look For |
 |---|-------|----------|-----------------|
@@ -130,11 +135,11 @@ Agents need structured errors to self-heal.
 | E6 | Validation error details | Medium | 400 responses include field-level validation errors |
 | E7 | No stack traces in examples | Low | Error examples don't leak internal details |
 
-**Why agents care:** When an agent gets a 400 error with no schema, it can't parse the error message to figure out what went wrong. It either retries blindly or gives up. With structured errors, the agent can read the error code, identify the bad field, fix the request, and retry.
+**Why this matters:** When a caller gets a 400 with no schema, they have to guess what failed. Guesswork leads to blind retries, brittle client logic, and support churn. With structured errors, the caller can identify the bad field, correct the request, and retry intentionally.
 
 ### Naming (6 checks)
 
-Agents need predictable patterns to reason about APIs.
+Deterministic APIs need predictable patterns. The surface area should be inferable.
 
 | # | Check | Severity | What to Look For |
 |---|-------|----------|-----------------|
@@ -145,4 +150,4 @@ Agents need predictable patterns to reason about APIs.
 | N5 | Consistent property casing | Low | Response properties use consistent casing (camelCase or snake_case) |
 | N6 | No action verbs in URLs | Low | Use HTTP methods instead of /getUser or /deleteOrder |
 
-**Why agents care:** Predictable naming lets agents infer URLs. If /users exists, an agent can predict /users/{id} exists. If naming is inconsistent (/getUsers, /order_delete), the agent can't make these inferences.
+**Why this matters:** Predictable naming lets people infer URLs safely. If /users exists, /users/{id} should not be a surprise. Inconsistent naming forces every consumer to memorize exceptions, and memorized exceptions turn into bugs.

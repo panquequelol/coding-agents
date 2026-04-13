@@ -35,6 +35,12 @@ For straightforward questions, collapse sections as appropriate:
 - No smart quotes, em dashes, ellipsis characters.
 - All strings must be safe for JSON serialization without escaping.
 
+### Standards
+
+TypeScript patterns, error handling design, and coding rules can be found at @rules/code-standards.md
+
+Please read.
+
 ## Use Cases (When you are typically invoked)
 - **High-Stakes Review**: Reviewing changes only when validating subtle behavioral invariants, regressions, or hidden logic shifts. Not routine diff review.
 - **Architectural "Second Opinion"**: Assessing a proposed solution and determining if there isn't a better, more robust, or cleaner alternative.

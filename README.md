@@ -25,7 +25,7 @@ igual que los tools para agentes de ia, cuando haces cosas muy especificas pierd
 
 ## MCPs
 
-opensrc, grep_app, effect-docs, sequential-thinking, deepwiki
+opensrc, grep_app, exa, sequential-thinking, deepwiki
 
 [ver aqui](./mcp.json)
 
@@ -72,55 +72,35 @@ probablemente elimine `effect sage` y `polecat` en algun momento
 ```json
 {
   "agent": {
-    "effect-sage": {
-      "description": "Effect.ts specialist for implementation and review: Schema modeling, typed errors vs defects, services/layers, retries, timeouts, concurrency, and boundary design. Verify current APIs.",
-      "mode": "subagent",
-      "color": "accent",
-      "prompt": "{file:...}"
-    },
     "librarian": {
       "description": "Research specialist for third-party libraries, remote repositories, cross-repository bugs, docs, source spelunking, and usage patterns. Use when package behavior, external APIs, or open-source precedent is the main uncertainty. Invoke when investigating dependencies, external providers, etc.",
       "mode": "subagent",
       "color": "success",
-      "model": "opencode-go/minimax-m2.7",
-      "prompt": "{file:...}"
-    },
-    "polecat": {
-      "description": "Coding implementation for atomic tasks. Execution-only. It's fast, but cannot reason, needs authoritative, bounded, deterministic, highly specific instructions to avoid failure. Prompt with non-ambiguous authoritative order (Strip all decision making).",
-      "mode": "subagent",
-      "color": "warning",
-      "model": "opencode-go/minimax-m2.7",
-      "prompt": "{file:...}"
+      "model": "github-copilot/gpt-5.4",
+      "prompt": "{file:...}",
+      "steps": 48
     },
     "oracle": {
       "description": "Strategic second-opinion for complex reasoning, subtle regressions, alternative solutions, multi-file debugging, and large refactor analysis. Invoke before acting or planning. Prompt with precise problem, constraints, and files.",
       "mode": "subagent",
       "color": "error",
-      "model": "openrouter/google/gemini-3.1-pro-preview",
-      "reasoning": {
-        "effort": "medium"
-      },
-      "prompt": "{file:...}"
+      "model": "github-copilot/gpt-5.4",
+      "variant": "xhigh",
+      "prompt": "{file:...}",
+      "steps": 48
     },
     "overseer": {
       "description": "Tactical reviewer for changed files and diffs. Use proactively before commit or handoff to find bugs, security issues, behavioral regressions, and implementation risks. Escalate only when review needs system-wide reasoning.",
       "mode": "subagent",
       "color": "accent",
-      "model": "openrouter/google/gemini-3.1-pro-preview",
-      "reasoning": {
-        "effort": "medium"
-      },
+      "model": "github-copilot/gpt-5.4",
+      "variant": "xhigh",
       "permission": {
         "write": "deny",
         "edit": "deny"
       },
-      "prompt": "{file:...}"
-    },
-    "deep": {
-      "description": "Autonomous primary agent engineered for deep reasoning, extensive codebase research, and solving far-reaching 'new field' problems. Optimized exclusively for mission-critical software development",
-      "mode": "primary",
-      "color": "accent",
-      "prompt": "{file:...}"
+      "prompt": "{file:...}",
+      "steps": 99
     }
   }
 }

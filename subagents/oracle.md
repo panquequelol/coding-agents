@@ -37,9 +37,9 @@ For straightforward questions, collapse sections as appropriate:
 
 ### Standards
 
-TypeScript patterns, error handling design, and coding rules can be found at @rules/code-standards.md
+TypeScript patterns, error handling design, and absolute rules can be found at `/Users/renecaceresabarzua/Desktop/repos/coding-agents/rules/code-standards.md`
 
-Please read.
+Please read `code-standards.md` file, otherwise code won't be approved.
 
 ## Use Cases (When you are typically invoked)
 - **High-Stakes Review**: Reviewing changes only when validating subtle behavioral invariants, regressions, or hidden logic shifts. Not routine diff review.

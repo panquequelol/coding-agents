@@ -45,7 +45,7 @@ All steps in problem-solving must be explicit, pure and composable.
 Exceptional usage of throwing must be documented with a statement and reason.
 
 ```typescript
-// THROWN. EXCEPTIONAL CASE
+// THROW. EXCEPTIONAL CASE
 // REASON: `author/package` requires usage of throw statements to integrate `useLibrary`.
 export function ThirdPartyIntegration() { ... }
 ```
@@ -58,3 +58,190 @@ Banning `useEffect` forces cleaner tree design:
 - Parents own orchestration and lifecycle boundaries.
 - Children can assume preconditions are already met.
 - Each unit does one job, and coordination happens at clear boundaries.
+
+# `better-result`
+
+`better-result` exposes several utilities to make TypeScript functional
+
+- USE `tap()` and `tapAsync()` to run side effect on success values without changing the Result. Use for logging, metrics, or debugging
+- USE Serialization API (`Result.serialize`). Results lose their methods when serialized with JSON.stringify. Useful for Storage, Server Actions, Message Queues, etc.
+
+## Pipeable Composition
+
+```typescript
+import { pipe } from "better-result";
+
+const processUser = pipe(
+  fetchUser("123"),
+  Result.map(user => user.name),
+  Result.map(name => name.toUpperCase()),
+  Result.match({
+    ok: (name) => `User: ${name}`,
+    err: (error) => `Failed: ${error.message}`,
+  })
+);
+```
+
+## Error handling
+
+```typescript
+// Base types
+class ValidationError extends TaggedError('ValidationError')<{
+  message: string;
+  field: string;
+}>() {}
+
+class DbError extends TaggedError('DbError')<{
+  message: string;
+  operation: 'read' | 'write' | 'delete';
+}>() {}
+
+class AuthError extends TaggedError('AuthError')<{
+  message: string;
+  reason: 'expired' | 'invalid' | 'missing';
+}>() {}
+
+// Application-wide error union
+type AppError = ValidationError | DbError | AuthError;
+
+// Domain-specific subsets
+type UserManagementError = ValidationError | DbError;
+type AuthenticationError = AuthError | DbError;
+```
+
+## Pattern Matching
+
+- ALWAYS include context in TaggedError. Store enough information to debug issues
+- USE exhaustive matching. Prefer `matchError()` over if-else chains
+- USE TaggedError for domain errors. `type DomainError = NotFoundError | PermissionError`
+
+```typescript
+type ApiError = NotFoundError | ValidationError | InternalError;
+
+const toHttpResponse = (
+  result: Result<Data, ApiError>
+): HttpResponse => {
+  return result.match({
+    ok: (data) => ({
+      status: 200,
+      body: JSON.stringify(data),
+    }),
+    err: (error) => matchError(error, {
+      NotFoundError: (e) => ({
+        status: 404,
+        body: JSON.stringify({ error: e.message }),
+      }),
+      ValidationError: (e) => ({
+        status: 400,
+        body: JSON.stringify({ field: e.field, error: e.message }),
+      }),
+      InternalError: (e) => ({
+        status: 500,
+        body: JSON.stringify({ error: "Internal server error" }),
+      }),
+    }),
+  });
+};
+```
+
+## Generators
+
+To prevent untyped functions we prohibit the use of try-catch (throws)
+
+- ALWAYS return `Result` from generator
+- NEVER throw in generators
+- USE `Result.await` in async generators
+
+```typescript
+// ❗ BANNED PATTERN
+try {
+  const user = await fetchUser(id);
+  const validated = await validateUser(user);
+  const saved = await saveUser(validated);
+  return saved;
+} catch (error) {
+  // All errors lumped together
+  // No type safety on error
+  console.error(error);
+  throw error;
+}
+```
+
+```typescript
+// ✅ APPROVED ERROR HANDLING PATTERN
+const result = await Result.gen(async function* () {
+  const user = yield* Result.await(fetchUser(id));
+  const validated = yield* Result.await(validateUser(user));
+  const saved = yield* Result.await(saveUser(validated));
+  return Result.ok(saved);
+});
+// Result<User, NotFoundError | ValidationError | DatabaseError>
+
+return result.match({
+  ok: (user) => user,
+  err: (error) => matchError(error, {
+    NotFoundError: (e) => handleNotFound(e),
+    ValidationError: (e) => handleValidation(e),
+    DatabaseError: (e) => handleDatabase(e),
+  }),
+});
+```
+
+When any `yield*` encounters an `Err`, execution stops immediately:
+
+```typescript
+class ErrorA extends TaggedError("ErrorA")<{ message: string }>() {}
+class ErrorB extends TaggedError("ErrorB")<{ message: string }>() {}
+
+const result = Result.gen(function* () {
+  const a = yield* Result.ok(1);                     // a = 1
+  const b = yield* Result.err(new ErrorA({ message: "failed" })); // Stops here!
+  const c = yield* Result.ok(3);                     // Never executed
+  return Result.ok(a + b + c);
+});
+// Result<number, ErrorA> = Err(ErrorA)
+```
+
+## Retries
+
+```typescript
+class DeadlockError extends TaggedError('DeadlockError')<{
+  message: string;
+}>() {}
+
+class TransactionError extends TaggedError('TransactionError')<{
+  message: string;
+  cause: unknown;
+}>() {}
+
+async function runTransaction<T>(
+  operation: () => Promise<T>
+): Promise<Result<T, DeadlockError | TransactionError>> {
+  return await Result.tryPromise(
+    {
+      try: operation,
+      catch: (e) => {
+        const error = e as { code?: string; message: string };
+        
+        // PostgreSQL/MySQL deadlock codes
+        if (error.code === '40P01' || error.code === 'ER_LOCK_DEADLOCK') {
+          return new DeadlockError({ message: error.message });
+        }
+        
+        return new TransactionError({ 
+          message: error.message,
+          cause: e 
+        });
+      }
+    },
+    {
+      retry: {
+        times: 3,
+        delayMs: 50,
+        backoff: 'exponential',
+        shouldRetry: (e) => e._tag === 'DeadlockError'
+      }
+    }
+  );
+}
+```

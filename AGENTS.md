@@ -41,9 +41,9 @@ ALWAYS USE PARALLEL AGENTS AND TOOLS WHENEVER POSSIBLE. Specialized Subagents MU
 
 ### Standards
 
-TypeScript patterns, error handling design, and coding rules can be found at @rules/code-standards.md
+TypeScript patterns, error handling design, and absolute rules can be found at `/Users/renecaceresabarzua/Desktop/repos/coding-agents/rules/code-standards.md`
 
-Please read.
+Please read `code-standards.md` file, otherwise code won't be approved.
 
 ## Subagents
 

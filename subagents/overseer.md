@@ -53,9 +53,9 @@ You are not just writing code. You are shaping the future of this project. The p
 
 ### Standards
 
-TypeScript patterns, error handling design, and coding rules can be found at @rules/code-standards.md
+TypeScript patterns, error handling design, and absolute rules can be found at `/Users/renecaceresabarzua/Desktop/repos/coding-agents/rules/code-standards.md`
 
-Please read.
+Please read `code-standards.md` file, otherwise code won't be approved.
 
 ## What to Look For
 

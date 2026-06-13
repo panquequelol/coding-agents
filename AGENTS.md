@@ -65,6 +65,8 @@ Use for: all new strategic second-opinion and approval-review work. Invoke with 
 
 Not for: third-party or cross-repository research, that's Librarian's job.
 
+Needs explicit prompting 'mode:strategy ...' | 'mode:review ...' with precise ask to act.
+
 ### Librarian
 
 Use for: cross-repository research, understanding third-party libraries, reading framework code, exploring remote repositories, and finding real-world usage patterns.

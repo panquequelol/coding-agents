@@ -27,15 +27,17 @@ If any condition fails, reject the request as out of scope. Do not change code, 
 5. If Pullfrog added a commit, inspect it for correctness and scope before keeping it.
 6. For each conversation:
    - Fix valid issues within this PR's scope.
-   - For intentional behavior, known trade-offs, future work, stale issues, invalid issues, or out-of-scope requests, do not change code. Reply with a short reason and include the decision in the next Pullfrog context comment.
+   - For intentional behavior, known trade-offs, future work, stale issues, invalid issues, or out-of-scope requests, do not change code. Reply with a short, concrete reason.
    - Leave unclear issues open and report them.
 7. If a requested fix adds capability or changes user-visible behavior, stop and ask. Do not decide that inside the review loop.
 8. Run relevant checks. If code changed, create one Conventional Commit commit and push the current branch. Do not create an empty commit.
 9. If you addressed or rejected a conversation, post exactly one new PR comment:
    - Start the comment with `@pullfrog review this.`
    - Use one line and one paragraph only.
-   - Keep it to 30 words or fewer. Mention addressed notes and why rejected requests remain out of scope.
-   - Example: `@pullfrog review this. Addressed the timezone picker notes. The map order change is intentional and out of scope for this PR.`
+   - Keep it to 30 words or fewer. For addressed notes, state the useful change. For rejected requests, name the request and give its concrete behavior reason. Do not add process language, scope labels, or claims about what was not requested.
+   - Before posting, remove any clause that only says what you reviewed, did not change, did not add, or kept in scope. Keep concrete fixes and necessary behavior reasons only.
+   - Example: `@pullfrog review this. Updated timezone selection to retain the chosen value after refresh.`
+   - For a necessary rejection, use a concrete reason: `@pullfrog review this. Kept map order unchanged because downstream rendering depends on the current order.`
 10. If you posted a comment, wait at least six minutes.
 11. If any unclear issue remains, stop after this cycle and report it. If you posted no comment, stop immediately.
 12. Read Pullfrog's new review. Ignore old resolved conversations.

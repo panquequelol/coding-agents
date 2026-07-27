@@ -1,6 +1,8 @@
 Create a draft PR that targets `main`.
 
-Use the Conventional Commits format for the branch name and each commit message.
+Use Conventional Commits for each commit message.
+
+Name the branch `<type>/<short-kebab-description>`, such as `fix/map-address-unavailable`. Use a Conventional Commits type such as `feat`, `fix`, `docs`, `refactor`, `test`, `build`, `ci`, `chore`, `perf`, `style`, or `revert`. Do not add a coding-agent or harness prefix such as `agent/`, `codex/`, or `claude/`.
 
 The project uses squash merge. Use a descriptive branch name.
 
@@ -9,6 +11,14 @@ Before you create the PR:
 1. Update the branch with the latest changes from `main`.
 2. Resolve all merge conflicts.
 3. Make sure the branch is ready to merge.
+
+Create the draft PR on GitHub with the body as its description.
+
+1. Pass the body directly in the GitHub PR creation request.
+2. Set the base branch to `main` and set the PR to draft.
+3. If you use `gh`, pass the body with `--body`. Do not use `--body-file`.
+4. Do not write or return the body as a file. Do not create a local or temporary PR-description artifact.
+5. If GitHub access fails, report the error. Do not save the body locally as a workaround.
 
 In the PR description:
 

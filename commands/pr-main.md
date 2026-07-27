@@ -12,11 +12,15 @@ Before you create the PR:
 
 In the PR description:
 
-1. Write the `why` and `how`, without using headlines.
-2. State why the PR exists and how it changes the project.
-3. Use short, clear sentences.
-4. Do not list test or verification results.
-5. Use ASD-STE100 Simplified Technical English.
+1. Write exactly two sentences in two short paragraphs.
+2. Sentence 1 says what was wrong or missing.
+3. Sentence 2 says what changed.
+4. Keep the full body at 40 words or fewer.
+5. Use casual, spoken English. Sound like a teammate, not release notes.
+6. Do not list test or verification results.
+7. Use no headings, bullets, Markdown, setup text, or closing text.
+8. Do not say `This PR` or `This change`.
+9. Keep only the reason and user effect. Skip details shown by the diff.
 
 ## Writing style
 
@@ -28,20 +32,18 @@ In the PR description:
 
 ## Body
 
-Use no other headings or Markdown.
+Before you submit the PR description, rewrite it if it has more than 40 words, more than two sentences, formal release-note language, filler, or unnecessary implementation detail.
 
-Before you submit the PR description, remove jargon. Use simple, clear language.
-
-Examples: 
+Examples:
 
 ```
-Legal paperwork and audio need a private review queue before the system sends them to AI.
+Discounted jobs showed the full price on the tip screen.
 
-Add private storage metadata, signed upload and read endpoints, and reviewer approval routes.
+Pass the discount through checkout and reloads.
 ```
 
 ```
-Large result buffers stay in memory until the request ends. This can cause high memory use for large requests.
+Big requests held every result in memory.
 
-Process results in chunks. Release each chunk after the system writes it.
+Write results in chunks, then drop each chunk.
 ```

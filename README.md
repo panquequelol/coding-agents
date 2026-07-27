@@ -1,31 +1,33 @@
-# setup, chiquitito
+# Coding Agents
 
-## AGENTS.md
+Agent instructions, specialist agent prompts, code rules, and MCP setup.
 
-explicito en lo que quiere, opinionado, orquestra usando subagentes. bias towards functional programming
+## Use
 
-[ver aqui](./AGENTS.md)
+Copy the files you need into an agent project. The main agent reads `AGENTS.md`.
 
-## SUBAGENTES
+| File | Use |
+| --- | --- |
+| [AGENTS.md](./AGENTS.md) | Main agent rules for concise technical text, code, and agent work. |
+| [rules/code-standards.md](./rules/code-standards.md) | Code organization, TypeScript, React, and error-handling rules. |
+| [commands/pr-main.md](./commands/pr-main.md) | Command rules to create a draft PR for `main`. |
+| [mcp.json](./mcp.json) | MCP server configuration. |
 
-igual que los tools para agentes de ia, cuando haces cosas muy especificas pierde todo el proposito dejar que un agente tome decisiones
+## Specialist agents
 
-[sentinel](./subagents/sentinel.md). usa modo strategy antes de implementar y modo review para aprobar cambios
+Use a specialist agent for its assigned task. Give each agent the problem, constraints, relevant files, and a required output.
 
-```
-Strategic second opinions and engineering implementation specialist. Invoke for tactical code reviews, implementation approval, planning and before acting. Runs on 2 modes: Strategy (before implementation), and Review (after implementation). Use proactively before commit, handoff or on plan mode. Prompt with precise problem, constraints, implementation request and files. Explicitly state 'mode:strategy ...' | 'mode:review ...'
-```
+| Agent | Use |
+| --- | --- |
+| [Oracle](./subagents/oracle.md) | Get a second opinion for plans, debugging, specifications, and refactor choices. |
+| [Sentinel](./subagents/sentinel.md) | Review changes before handoff or commit. Do not treat work as complete without its approval. |
+| [Librarian](./subagents/librarian.md) | Research current or source-sensitive questions on the web. |
 
-[librarian](./subagents/librarian.md). investiga documencion
+## MCP servers
 
-```
-Research specialist for third-party libraries, remote repositories, cross-repository bugs, docs, source spelunking, and usage patterns. Invoke when investigating dependencies, external providers and the world. Use when package behavior, external APIs, or open-source precedent is the main uncertainty.
-```
+`mcp.json` configures these servers:
 
-[ver aqui](./subagents/)
-
-## MCPs
-
-opensrc, grep_app, exa, sequential-thinking, deepwiki
-
-[ver aqui](./mcp.json)
+- `opensrc`
+- `grep_app`
+- `deepwiki`
+- `sequential-thinking`

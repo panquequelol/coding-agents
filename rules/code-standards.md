@@ -1,3 +1,31 @@
+# Coding Practices
+
+## Code Organization
+
+- **Single responsibility**: Each source file should have a clear, focused scope/purpose
+- **Split large files**: Break files when they become large or handle too many concerns
+- **Type separation**: Always separate types and interfaces into `types.ts` or `types/*.ts`
+- **Constants extraction**: Move constants to a dedicated `constants.ts` file
+
+## Runtime Environment
+
+- **Prefer isomorphic code**: Write runtime-agnostic code that works in Node, browser, and workers whenever possible
+- **Clear runtime indicators**: When code is environment-specific, add a comment at the top of the file:
+
+```ts
+// @env node
+// @env browser
+```
+
+## Explicitness
+
+Favor explicit, traceable code over implicit "magic". A reader (human or agent) should be able to follow where every name comes from without running tooling.
+
+## Comments
+
+- **Avoid unnecessary comments**: Code should be self-explanatory
+- **Explain "why" not "how"**: Comments should describe the reasoning or intent, not what the code does
+
 # TypeScript
 
 TypeScript is infested by landmines, from `Promise` to try-catch blocks. 

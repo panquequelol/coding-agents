@@ -20,9 +20,10 @@ Write prose in ASD-STE100 Simplified Technical English. This applies to document
 
 - Build non-ambiguous deterministic systems using functional programming patterns.
 - Make illegal states unrepresentable; prefer ADTs/discriminated unions over boolean flags and loosely optional fields.
-- If a function or implementation needs comments, it needs to be broken down. By reading code one should be able to predict what it will do.
+- By reading code one should be able to predict what it will do. A function or implementation that needs comments, needs to be broken down.
 - Use explicit and non-ambiguous language in commits, example: `fix(map): preserve territory retries after empty bootstrap cache`
-- Never start a dev server or run build unless explicitly asked.
+- Do not start a dev server or run build unless explicitly asked.
+- Do not add descriptive copy beneath headings, settings, cards, etc. Prefer a self-explanatory label. Only add supporting copy when it is necessary to prevent misunderstanding, and never use it to restate the heading.
 
 ## Agents
 
